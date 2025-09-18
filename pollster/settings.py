@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'accounts.apps.AccountsConfig',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+
+# =============================================================================
+# AUTHENTICATION REDIRECTS (MODIFIED)
+# =============================================================================
+
+# URL to redirect to after a successful login.
+LOGIN_REDIRECT_URL = '/'
+
+# URL to redirect to after a successful logout.
+LOGOUT_REDIRECT_URL = '/'

@@ -22,5 +22,6 @@ urlpatterns = [
     #path('', views.home, name='home'),
     path('accounts/', include('accounts.urls', namespace="accounts")),
     path('polls/', include('polls.urls', namespace="polls")),
+    path('', include('core.urls')),
     
 ]
