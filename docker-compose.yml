@@ -1,0 +1,16 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  web:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+    # Command to run your app using Gunicorn
+    command: gunicorn pollster.wsgi:application --bind 0.0.0.0:8000
+    # This mounts your local code into the container for development
+    volumes:
+      - .:/app
+    # Map port 8000 on your machine to port 8000 in the container
+    ports:
+      - "8000:8000"
