@@ -61,6 +61,4 @@ Follow these steps to get a local copy of the project up and running.
     Follow the prompts to set your username, email, and password.
 
 6.  **Access the application:**
-    The application is now running. You can access it in your browser at the following URLs:
-    * **Homepage**: [http://localhost:8000/](http://localhost:8000/)
-    * **Admin Panel**: [http://localhost:8000/admin/](http://localhost:8000/admin/)
+    The application is now running. You can access it in your browser.
