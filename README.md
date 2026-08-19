@@ -14,51 +14,9 @@ Pollster is a functional web application built with the Django framework that al
 
 ## Technology Stack
 
-* **Backend**: Python, Django
-* **Frontend**: HTML, CSS, Bootstrap
+* **Backend**: Django
+* **Frontend**: HTML, CSS, Javascript
 * **Database**: SQLite3
 * **Web Server**: Gunicorn
 * **Containerization**: Docker, Docker Compose
 
-## Local Setup Instructions
-
-Follow these steps to get a local copy of the project up and running.
-
-### Prerequisites
-
-* Git
-* Docker and Docker Compose
-
-### Installation
-
-1.  **Clone the repository:**
-    ```sh
-    git clone [https://github.com/dibyanshu-8/pollster.git](https://github.com/dibyanshu-8/pollster.git)
-    ```
-
-2.  **Navigate to the project directory:**
-    ```sh
-    cd pollster
-    ```
-
-3.  **Build and run the Docker containers:**
-    This command builds the Django image from the `Dockerfile` and starts the application.
-    ```sh
-    docker-compose up --build
-    ```
-
-4.  **Apply database migrations:**
-    In a **new terminal window**, run the following command to create the necessary database tables inside the running container.
-    ```sh
-    docker-compose exec web python manage.py migrate
-    ```
-
-5.  **Create a superuser:**
-    To use the Django admin panel, create an administrator account.
-    ```sh
-    docker-compose exec web python manage.py createsuperuser
-    ```
-    Follow the prompts to set your username, email, and password.
-
-6.  **Access the application:**
-    The application is now running. You can access it in your browser.

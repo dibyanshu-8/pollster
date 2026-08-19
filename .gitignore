@@ -1,1 +1,9 @@
+__pycache__/
+*.pyc
+db.sqlite3
+/staticfiles/
+*.env
 polenv/
+.DS_Store
+Thumbs.db
+.hintrc
