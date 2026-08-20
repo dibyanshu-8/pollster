@@ -1,6 +1,13 @@
-# core/views.py
-
 from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 def home(request):
     return render(request, 'home.html')
+
+class DashboardView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": f"Welcome {request.user.username}, you are authenticated!"})
