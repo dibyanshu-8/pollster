@@ -1,5 +1,6 @@
 # accounts/views.py
 
+''' 
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -37,3 +38,34 @@ def login_user(request):
             
     form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
+    
+    '''
+    
+from django.shortcuts import render, redirect
+from django.contrib import messages
+import requests
+
+def jwt_login_page(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            response = requests.post('http://localhost:8000/api/token/', json={
+                'username': username,
+                'password': password
+            })
+        except requests.exceptions.RequestException:
+            messages.error(request, "Auth service unavailable.")
+            return render(request, 'accounts/jwt_login.html')
+
+        if response.status_code == 200:
+            tokens = response.json()
+            request.session['access'] = tokens.get('access')
+            request.session['refresh'] = tokens.get('refresh')
+            messages.success(request, "Login successful with JWT.")
+            return redirect("core:dashboard")
+        else:
+            messages.error(request, "Invalid credentials.")
+    
+    return render(request, 'accounts/jwt_login.html')

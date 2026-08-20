@@ -1,10 +1,7 @@
-# core/urls.py
-
 from django.urls import path
-from . import views
+from .views import home, DashboardView
 
-app_name = 'core'
 urlpatterns = [
-    # This gives the URL the name 'home' that Django is looking for
-    path('', views.home, name='home'),
+    path('', home, name='home'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
 ]

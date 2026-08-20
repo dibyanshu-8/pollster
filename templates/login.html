@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center">
+  <h2>Login</h2>
+  <form onsubmit="event.preventDefault(); login();">
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function login() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  const response = await fetch("/api/token/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await response.json();
+  document.cookie = `access=${data.access}; path=/`;
+  document.cookie = `refresh=${data.refresh}; path=/`;
+  alert("Login successful!");
+}
+</script>
+{% endblock %}
