@@ -7,11 +7,11 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    # Make sure this line is uncommented
-    #path('register/', views.register_user, name='register'),
+    
+    path('register/', views.register_user, name='register'),
     
     path('login/', views.jwt_login_page, name='login'),
     
-    #path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     #path('login/', views.login_page, name='login'),
 ]
